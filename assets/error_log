@@ -1,0 +1,10 @@
+[19-Jul-2016 05:51:02 UTC] PHP Notice:  Undefined variable: mail in /home/masterassassin13/public_html/kneaders/mailBug.php on line 11
+[19-Jul-2016 05:51:02 UTC] PHP Fatal error:  Function name must be a string in /home/masterassassin13/public_html/kneaders/mailBug.php on line 11
+[19-Jul-2016 05:52:07 UTC] PHP Notice:  Undefined variable: mail in /home/masterassassin13/public_html/kneaders/mailBug.php on line 11
+[19-Jul-2016 05:52:07 UTC] PHP Fatal error:  Function name must be a string in /home/masterassassin13/public_html/kneaders/mailBug.php on line 11
+[19-Jul-2016 05:52:43 UTC] PHP Notice:  Undefined variable: mail in /home/masterassassin13/public_html/kneaders/mailBug.php on line 11
+[19-Jul-2016 05:52:43 UTC] PHP Fatal error:  Function name must be a string in /home/masterassassin13/public_html/kneaders/mailBug.php on line 11
+[19-Jul-2016 05:54:54 UTC] PHP Notice:  Undefined variable: mail in /home/masterassassin13/public_html/kneaders/mailBug.php on line 11
+[19-Jul-2016 05:54:54 UTC] PHP Fatal error:  Function name must be a string in /home/masterassassin13/public_html/kneaders/mailBug.php on line 11
+[19-Jul-2016 05:56:55 UTC] PHP Notice:  Undefined variable: mail in /home/masterassassin13/public_html/kneaders/mailBug.php on line 12
+[19-Jul-2016 05:56:55 UTC] PHP Fatal error:  Function name must be a string in /home/masterassassin13/public_html/kneaders/mailBug.php on line 12
