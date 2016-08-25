@@ -1,0 +1,408 @@
+#pageHTML{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+#appContainer{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgb(200, 200, 200);
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
+
+#optionsScreen{
+	height: 90%;
+	width: 90%;
+	position: absolute;
+	left: 5%;
+	top: 5%;
+	background-color: gray;
+	color: black;
+	display: none;
+	overflow-y: scroll;
+	font-size: 20px;
+	text-align: center;
+}
+
+#optionsClose{
+	height: 12%;
+	width: 7%;
+	position: absolute;
+	left: 93%;
+	top: 0;
+	background-color: red;
+}
+
+#optionsButton{
+	height: 15%;
+	width: 10%;
+	position: absolute;
+	top: 85%;
+	left: 90%;
+}
+
+#creditsButtons{
+	height: 100%;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#creditsButton{
+	height: 30%;
+	width: 50%;
+	background-color: white;
+	color: black;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 3%;
+	text-align: center;
+	font-size: 70px;
+	font-family: courier new;
+}
+
+#creditsButtonText{
+	padding-top: 10%;
+}
+
+#credits{
+	display: none;
+}
+
+#debugButton{
+	height: 30%;
+	width: 50%;
+	background-color: white;
+	color: black;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-size: 45px;
+	font-family: courier new;
+}
+
+#credittedPeople > li > span{
+	font-weight: bold;
+	font-size: 40px;
+}
+
+#debugForm{
+	padding-top: 2%;
+	height: 100%;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#bugSubmitForm{
+	height: 100%;
+}
+
+#emailerInput{
+	height: 10%;
+	width: 80%;
+	font-size: 40px;
+	margin-bottom: 5%;
+}
+
+#emailBugInput{
+	height: 60%;
+	width: 80%;
+	font-size: 40px;
+}
+
+#bugSubmitButton{
+	font-size: 40px;
+	height: 10%;
+	width: 30%;
+}
+
+#tutorialScreen{
+	height: 90%;
+	width: 90%;
+	position: absolute;
+	left: 5%;
+	top: 5%;
+	background-color: gray;
+	color: black;
+	display: none;
+}
+
+#tutorialClose{
+	height: 10%;
+	width: 7%;
+	position: absolute;
+	left: 93%;
+	top: 0;
+	background-color: red;
+}
+
+#errorMessage{
+	height: 60%;
+	width: 60%;
+	position: absolute;
+	top: 20%;
+	left: 20%;
+	background-color: gray;
+	color: black;
+	display: none;
+	overflow-y: scroll;
+	font-size: 32px;
+	border-radius: 5%;
+	text-align: center;
+}
+
+#errorClose{
+	height: 10%;
+	width: 7%;
+	position: absolute;
+	left: 93%;
+	top: 0;
+	background-color: red;
+	border-radius: 5%;
+}
+
+#devBuild{
+	position: absolute;
+	top: 96%;
+	left: 1%;
+	color: gray;
+	font-size: 18px;
+}
+
+#menuScreenContainer{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: rgb(60, 60, 60);
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+#titleBar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 13%;
+	width: 100%;
+	background-color: black;
+	color: white;
+	font-size: 48px;
+	text-align: center;
+	padding-top: 2%;
+}
+
+#menuAligner{
+	height: 40%;
+	width: 100%;
+	position: absolute;
+	top: 30%;
+	text-align: center;
+}
+
+.menuButton{
+	height: 92%;
+	width: 20%;
+	border-radius: 15%;
+	border: 5px solid black;
+	box-shadow: 10px 10px 50px black;
+	display: inline-block;
+}
+
+#sandwichButton{
+	margin-right: 5%;
+	background-color: pink;
+}
+
+#saladButton{
+	margin: 0;
+	background-color: green;
+}
+
+#smoothieButton{
+	margin-left: 5%;
+	background-color: blue;
+}
+
+#sandwichScreenContainer{
+	height: 100%;
+	width: 100%;
+	display: none;
+}
+
+#saladScreenContainer{
+	height: 100%;
+	width: 100%;
+	display: none;
+}
+
+.ingredientContainer{
+	height: 95%;
+	width: 70%;
+	background-color: gray;
+	position: absolute;
+	left: -70%;
+	top: 2.5%;
+	display: none;
+	text-align: center;
+}
+
+.ingredientContainerHeading{
+	height: 10%;
+	width: 100%;
+	background-color: black;
+	font-size: 30px;
+	color: white;
+}
+
+.hideButton{
+	height: 10%;
+	width: 8%;
+	background-color: red;
+	position: absolute;
+	left: 92%;
+	top: 0;
+}
+
+.workspace{
+	height: 100%;
+	width: 80%;
+	position: absolute;
+	left: 10%;
+	top: 0;
+	display: none;
+}
+
+.navBar{
+	height: 100%;
+	width: 10%;
+	background-color: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+.navBarOther{
+	height: 100%;
+	width: 10%;
+	background-color: white;
+	position: absolute;
+	top: 0;
+	left: 90%;
+	display: none;
+}
+
+.sideButton{
+	width: 110%;
+	height: 15%;
+	background-color: gray;
+	border-top-right-radius: 40%;
+	border-bottom-right-radius: 40%;
+	margin-top: 4%;
+	margin-bottom: 4%;
+	position: relative;
+	left: 0;
+}
+
+.sideButtonOther{
+	width: 110%;
+	height: 15%;
+	background-color: gray;
+	border-top-left-radius: 40%;
+	border-bottom-left-radius: 40%;
+	margin-top: 4%;
+	margin-bottom: 4%;
+	position: relative;
+	left: -10%;
+}
+
+.dynamicSideButtons{
+	display: none;
+}
+
+.helpButton{
+	height: 10%;
+	width: 100%;
+	border-radius: 100%;
+	position: relative;
+	top: 20%;
+}
+
+.backButton{
+	height: 15%;
+	width: 90%;
+	position: relative;
+	top: 25%;
+	left: 5%;
+}
+
+.trashArea{
+	height: 20%;
+	width: 30%;
+	background-color: red;
+	opacity: 0.5;
+	position: absolute;
+	top: 80%;
+	left: 10%;
+	display: none;
+	border-top-right-radius: 30%;
+}
+
+.gradeButton{
+	height: 20%;
+	width: 15%;
+	background-color: green;
+	position: absolute;
+	top: 80%;
+	left: 75%;
+	border-top-left-radius: 30%;
+	border-bottom-left-radius: 5%;
+	border-top-right-radius: 5%;
+}
+
+.ingredientOrganizer{
+	height: 90%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-y: scroll;
+}
+
+.ingredientTable{
+	width: 100%;
+	height: 100%;
+}
+
+.ingredientRow{
+	height: 35%;
+	margin-bottom: 2%;
+}
+
+.ingredientRow > div{
+	display: inline-block;
+	width: 25%;
+	height: 100%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin: 0;
+	overflow: hidden;
+	font-size: 30px;
+}
+
+.ingredientRow > div > span{
+	position: relative;
+	top: -60%;
+	font-weight: bold;
+}

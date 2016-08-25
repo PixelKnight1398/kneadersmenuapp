@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html id = "pageHTML">
+	<head>
+		<title>Kneaders Menu Study App</title>
+		<link id = "appLayout" type = "text/css" rel = "stylesheet" href = "layout.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src = "food.js"></script>
+	</head>
+	<body>
+		<div id = "appContainer">
+			<div id = "sandwichScreenContainer">
+				<div class = "workspace" id = "sandwichWorkspace">
+					
+				</div>
+				<div class = "trashArea" id = "sandwichTrash">
+					<img src = "assets/trashIcon.png" height = "100%" width = "50%" style = "margin-left: auto; margin-right: auto;"/>
+				</div>
+				<div class = "gradeButton" onmousedown = "grade()">
+					<img src = "assets/checkmarkIcon.png" height = "100%" width = "100%"/>
+				</div>
+				<div class = "navBar" id = "sandwichBar">
+					<div class = "sideButton" id = "breadSideButton" onmousedown = "showIngredients(1)">
+						<img src = "assets/breads_00.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+					</div>
+					<div class = "sideButton" id = "sauceSideButton" onmousedown = "showIngredients(2)">
+						<img src = "assets/sauces_00.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+					</div>
+					<div class = "sideButton" id = "cheeseSideButton" onmousedown = "showIngredients(3)">
+						<img src = "assets/cheese_1.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+					</div>
+					<div class = "dynamicSideButtons" id = "dynamicSandwichButtons">
+						<div class = "dynamicSideButton" id = "meatSideButton" onmousedown = "showIngredients(4)">
+							<img src = "assets/meats_2.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+						</div>
+						<div class = "dynamicSideButton" id = "vegetableSideButton" onmousedown = "showIngredients(5)">
+							<img src = "assets/vegetables_00.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+						</div>
+						<div class = "dynamicSideButton" id = "miscSideButton" onmousedown = "showIngredients(6)">
+							<img src = "assets/misc_0.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+						</div>
+					</div>
+					<div class = "helpButton" onmousedown = "toggleTutorial(1)">
+						<img src = "assets/questionMark.png" height = "100%" width = "100%"/>
+					</div>
+					<div class = "backButton" onclick = "hideScreen(1)">
+						<img src = "assets/backArrow.png" height = "100%" width = "100%"/>
+					</div>
+				</div>
+					<div class = "navBarOther" id = "sandwichNavBarOther">
+						<div class = "sideButtonOther" id = "meatSideButtonOther" onmousedown = "showIngredients(4)">
+							<img src = "assets/meats_2.png" height = "100%" width = "80%" style = "position: absolute; left: 20%;"/>
+						</div>
+						<div class = "sideButtonOther" id = "vegetableSideButtonOther" onmousedown = "showIngredients(5)">
+							<img src = "assets/vegetables_00.png" height = "100%" width = "80%" style = "position: absolute; left: 20%;"/>
+						</div>
+						<div class = "sideButtonOther" id = "miscSideButtonOther" onmousedown = "showIngredients(6)">
+							<img src = "assets/misc_0.png" height = "100%" width = "80%" style = "position: absolute; left: 20%;"/>
+						</div>
+					</div>
+					<div class = "ingredientContainer" id = "breadSandwichContainer">
+						<div class = "ingredientContainerHeading">
+							Breads
+							<div class = "hideButton" onmousedown = "hideIngredients(1)">
+								
+							</div>
+						</div>
+						<div class = "ingredientOrganizer">
+							<div class = "ingredientTable">
+								<div class = "ingredientRow">
+									<div onmousedown = "createItem('bread', 'French Country')"><img src = "assets/breads_00.png" height = "100%" width = "100%" style = "display: inline;"/><span>French Country Sourdough</span></div>
+									<div onmousedown = "createItem('bread', 'Ciabatta')"><img src = "assets/breads_01.png" height = "100%" width = "100%" style = "display: inline;"/><span>Ciabatta</span></div>
+									<div onmousedown = "createItem('bread', 'Baguette')"><img src = "assets/breads_02.png" height = "100%" width = "100%" style = "display: inline;"/><span>Baguette</span></div>
+								</div>
+								<div class = "ingredientRow">
+									<div onmousedown = "createItem('bread', 'Rye')"><img src = "assets/breads_03.png" height = "100%" width = "100%" style = "display: inline;"/><span>Rye</span></div>
+									<div onmousedown = "createItem('bread', '12 Grain')"><img src = "assets/breads_04.png" height = "100%" width = "100%" style = "display: inline;"/><span>Hazelnut 12 Grain</span></div>
+									<div onmousedown = "createItem('bread', 'Asiago')"><img src = "assets/breads_05.png" height = "100%" width = "100%" style = "display: inline;"/><span>Asiago</span></div>
+								</div>
+								<div class = "ingredientRow">
+									<div onmousedown = "createItem('bread', '100%')"><img src = "assets/breads_06.png" height = "100%" width = "100%" style = "display: inline;"/><span>100% Whole Wheat</span></div>
+									<div onmousedown = "createItem('bread', 'White')"><img src = "assets/breads_07.png" height = "100%" width = "100%" style = "display: inline;"/><span>White</span></div>
+									<div onmousedown = "createItem('bread', 'Wheat')"><img src = "assets/breads_08.png" height = "100%" width = "100%" style = "display: inline;"/><span>Honey Wheat</span></div>
+								</div>
+								<div class = "ingredientRow">
+									<div onmousedown = "createItem('bread', 'Focaccia')"><img src = "assets/breads_09.png" height = "100%" width = "100%" style = "display: inline;"/><span>Focaccia</span></div>
+									<div onmousedown = "createItem('bread', 'Croissant')"><img src = "assets/breads_10.png" height = "100%" width = "100%" style = "display: inline;"/><span>Croissant</span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class = "ingredientContainer" id = "sauceSandwichContainer">
+						<div class = "ingredientContainerHeading">
+							Sauces
+							<div class = "hideButton" onmousedown = "hideIngredients(2)">
+								
+							</div>
+						</div>
+						<div class = "ingredientOrganizer">
+							<div class = "ingredientTable">
+								<div class = "ingredientRow">
+									<div onmousedown = "createItem('sauce', 'Kneaders')"><img src = "assets/sauces_00.png" height = "100%" width = "100%" style = "display: inline;"/><span>Kneaders Sauce</span></div>
+									<div onmousedown = "createItem('sauce', 'Ranch')"><img src = "assets/sauces_01.png" height = "100%" width = "100%" style = "display: inline;"/><span>Ranch</span></div>
+									<div onmousedown = "createItem('sauce', 'Honey Mustard')"><img src = "assets/sauces_02.png" height = "100%" width = "100%" style = "display: inline;"/><span>Honey Mustard</span></div>
+								</div>
+								<div class = "ingredientRow">
+									<div onmousedown = "createItem('sauce', 'Mayonaisse')"><img src = "assets/sauces_03.png" height = "100%" width = "100%" style = "display: inline;"/><span>Mayonaisse</span></div>
+									<div onmousedown = "createItem('sauce', 'Cranberry')"><img src = "assets/sauces_04.png" height = "100%" width = "100%" style = "display: inline;"/><span>Cranberry</span></div>
+									<div onmousedown = "createItem('sauce', 'Pesto')"><img src = "assets/sauces_05.png" height = "100%" width = "100%" style = "display: inline;"/><span>Pesto</span></div>
+								</div>
+								<div class = "ingredientRow">
+									<div onmousedown = "createItem('sauce', 'Au Jus')"><img src = "assets/sauces_06.png" height = "100%" width = "100%" style = "display: inline;"/><span>Au jus</span></div>
+									<div onmousedown = "createItem('sauce', 'Lemon')"><img src = "assets/sauces_07.png" height = "100%" width = "100%" style = "display: inline;"/><span>Lemon</span></div>
+									<div onmousedown = "createItem('sauce', 'Sour cream')"><img src = "assets/sauces_08.png" height = "100%" width = "100%" style = "display: inline;"/><span>Sour Cream</span></div>
+								</div>
+								<div class = "ingredientRow">
+									<div onmousedown = "createItem('sauce', 'Vinegar')"><img src = "assets/sauces_09.png" height = "100%" width = "100%" style = "display: inline;"/><span>Vinegar</span></div>
+									<div onmousedown = "createItem('sauce', 'Thousand Island')"><img src = "assets/sauces_10.png" height = "100%" width = "100%" style = "display: inline;"/><span>Thousand Island</span></div>
+									<div onmousedown = "createItem('sauce', 'Lemon Garlic')"><img src = "assets/sauces_11.png" height = "100%" width = "100%" style = "display: inline;"/><span>Lemon Garlic</span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class = "ingredientContainer" id = "cheeseSandwichContainer">
+						<div class = "ingredientContainerHeading">
+							Cheeses
+							<div class = "hideButton" onmousedown = "hideIngredients(3)">
+								
+							</div>
+						</div>
+						<div class = "ingredientOrganizer">
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('cheese', 'Provolone')"><img src = "assets/cheese_2.png" height = "100%" width = "100%" style = "display: inline;"/><span>Provolone</span></div>
+								<div onmousedown = "createItem('cheese', 'Swiss')"><img src = "assets/cheese_1.png" height = "100%" width = "100%" style = "display: inline;"/><span>Swiss</span></div>
+								<div onmousedown = "createItem('cheese', 'Muenster')"><img src = "assets/cheese_0.png" height = "100%" width = "100%" style = "display: inline;"/><span>Muenster</span></div>
+							</div>
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('cheese', 'Mozzarella')"><img src = "assets/cheese_3.png" height = "100%" width = "100%" style = "display: inline;"/><span>Mozzarella</span></div>
+								<div onmousedown = "createItem('cheese', 'Ricotta')"><img src = "assets/cheese_5.png" height = "100%" width = "100%" style = "display: inline;"/><span>Ricotta</span></div>
+								<div onmousedown = "createItem('cheese', 'Parmesan')"><img src = "assets/cheese_4.png" height = "100%" width = "100%" style = "display: inline;"/><span>Parmesan</span></div>
+							</div>
+						</div>
+					</div>
+					<div class = "ingredientContainer" id = "meatSandwichContainer">
+						<div class = "ingredientContainerHeading">
+							Meats
+							<div class = "hideButton" onmousedown = "hideIngredients(4)">
+								
+							</div>
+						</div>
+						<div class = "ingredientOrganizer">
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('meat', 'Turkey')"><img src = "assets/meats_0.png" height = "100%" width = "100%" style = "display: inline;"/><span>Turkey</span></div>
+								<div onmousedown = "createItem('meat', 'Beef')"><img src = "assets/meats_1.png" height = "100%" width = "100%" style = "display: inline;"/><span>Beef</span></div>
+								<div onmousedown = "createItem('meat', 'Ham')"><img src = "assets/meats_2.png" height = "100%" width = "100%" style = "display: inline;"/><span>Ham</span></div>
+							</div>
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('meat', 'Pastrami')"><img src = "assets/meats_3.png" height = "100%" width = "100%" style = "display: inline;"/><span>Pastrami</span></div>
+								<div onmousedown = "createItem('meat', 'Bacon')"><img src = "assets/meats_4.png" height = "100%" width = "100%" style = "display: inline;"/><span>Bacon</span></div>
+								<div onmousedown = "createItem('meat', 'Chicken')"><img src = "assets/meats_5.png" height = "100%" width = "100%" style = "display: inline;"/><span>Chicken</span></div>
+							</div>
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('meat', 'Tuna')"><img src = "assets/meats_6.png" height = "100%" width = "100%" style = "display: inline;"/><span>Albacore Tuna</span></div>
+							</div>
+						</div>
+					</div>
+					<div class = "ingredientContainer" id = "vegetableSandwichContainer">
+						<div class = "ingredientContainerHeading">
+							Vegetables
+							<div class = "hideButton" onmousedown = "hideIngredients(5)">
+								
+							</div>
+						</div>
+						<div class = "ingredientOrganizer">
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('vegetable', 'Lettuce')"><img src = "assets/vegetables_00.png" height = "100%" width = "100%" style = "display: inline;"/><span>Lettuce</span></div>
+								<div onmousedown = "createItem('vegetable', 'Tomato')"><img src = "assets/vegetables_01.png" height = "100%" width = "100%" style = "display: inline;"/><span>Tomato</span></div>
+								<div onmousedown = "createItem('vegetable', 'Onion')"><img src = "assets/vegetables_02.png" height = "100%" width = "100%" style = "display: inline;"/><span>Onions</span></div>
+							</div>
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('vegetable', 'Avocado')"><img src = "assets/vegetables_03.png" height = "100%" width = "100%" style = "display: inline;"/><span>Avocado</span></div>
+								<div onmousedown = "createItem('vegetable', 'Celery')"><img src = "assets/vegetables_04.png" height = "100%" width = "100%" style = "display: inline;"/><span>Celery</span></div>
+								<div onmousedown = "createItem('vegetable', 'Dill')"><img src = "assets/vegetables_05.png" height = "100%" width = "100%" style = "display: inline;"/><span>Dill</span></div>
+							</div>
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('vegetable', 'Water Chestnuts')"><img src = "assets/vegetables_06.png" height = "100%" width = "100%" style = "display: inline;"/><span>Water Chestnuts</span></div>
+								<div onmousedown = "createItem('vegetable', 'Green Onion')"><img src = "assets/vegetables_07.png" height = "100%" width = "100%" style = "display: inline;"/><span>Green Onion</span></div>
+								<div onmousedown = "createItem('vegetable', 'Basil')"><img src = "assets/vegetables_08.png" height = "100%" width = "100%" style = "display: inline;"/><span>Basil</span></div>
+							</div>
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('vegetable', 'Spinach')"><img src = "assets/vegetables_09.png" height = "100%" width = "100%" style = "display: inline;"/><span>Spinach</span></div>
+								<div onmousedown = "createItem('vegetable', 'Artichoke')"><img src = "assets/vegetables_10.png" height = "100%" width = "100%" style = "display: inline;"/><span>Artichoke</span></div>
+								<div onmousedown = "createItem('vegetable', 'Sourkraut')"><img src = "assets/vegetables_11.png" height = "100%" width = "100%" style = "display: inline;"/><span>Sourkraut</span></div>
+							</div>
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('vegetable', 'Mushrooms')"><img src = "assets/vegetables_12.png" height = "100%" width = "100%" style = "display: inline;"/><span>Mushrooms</span></div>
+								<div onmousedown = "createItem('vegetable', 'Zucchini')"><img src = "assets/vegetables_13.png" height = "100%" width = "100%" style = "display: inline;"/><span>Zucchini</span></div>
+								<div onmousedown = "createItem('vegetable', 'Red Pepper')"><img src = "assets/vegetables_14.png" height = "100%" width = "100%" style = "display: inline;"/><span>Red Pepper</span></div>
+							</div>
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('vegetable', 'Eggplant')"><img src = "assets/vegetables_15.png" height = "100%" width = "100%" style = "display: inline;"/><span>Eggplant</span></div>
+							</div>
+						</div>
+					</div>
+					<div class = "ingredientContainer" id = "miscSandwichContainer">
+						<div class = "ingredientContainerHeading">
+							Miscellaneous
+							<div class = "hideButton" onmousedown = "hideIngredients(6)">
+								
+							</div>
+						</div>
+						<div class = "ingredientOrganizer">
+							<div class = "ingredientRow">
+								<div onmousedown = "createItem('misc', 's&p')"><img src = "assets/misc_0.png" height = "100%" width = "100%" style = "display: inline;position: relative;
+								left: 15%;"/><span>S &#38; P</span></div>
+								<div onmousedown = "createItem('misc', 'Pecans')"><img src = "assets/misc_1.png" height = "100%" width = "100%" style = "display: inline;"/><span>Pecans</span></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<div id = "saladScreenContainer">
+				<div class = "navBar" id = "saladBar">
+					<div class = "sideButton" id = "lettuceSideButton" onmousedown = "showIngredients(1)">
+						<img src = "assets/lettuce_1.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+					</div>
+					<div class = "sideButton" id = "dressingSideButton" onmousedown = "showIngredients(2)">
+						<img src = "assets/dressing_0.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+					</div>
+					<div class = "sideButton" id = "cheeseSideButton" onmousedown = "showIngredients(3)">
+						<img src = "assets/cheese_3.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+					</div>
+					<div class = "dynamicSideButtons" id = "dynamicSaladButtons">
+						<div class = "dynamicSideButton" id = "meatSideButton" onmousedown = "showIngredients(4)">
+							<img src = "assets/meatSalad_0.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+						</div>
+						<div class = "dynamicSideButton" id = "toppingSideButton" onmousedown = "showIngredients(5)">
+							<img src = "assets/topping_00.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+						</div>
+					</div>
+					<div class = "helpButton" onmousedown = "toggleTutorial(1)">
+						<img src = "assets/questionMark.png" height = "100%" width = "100%"/>
+					</div>
+					<div class = "backButton" onclick = "hideScreen(2)">
+						<img src = "assets/backArrow.png" height = "100%" width = "100%"/>
+					</div>
+				</div>
+				<div class = "navBarOther" id = "saladNavBarOther">
+					<div class = "sideButtonOther" id = "meatSideButtonOther" onmousedown = "showIngredients(4)">
+						<img src = "assets/meatSalad_0.png" height = "100%" width = "80%" style = "position: absolute; left: 20%;"/>
+					</div>
+					<div class = "sideButtonOther" id = "toppingSideButtonOther" onmousedown = "showIngredients(5)">
+						<img src = "assets/topping_00.png" height = "100%" width = "80%" style = "position: absolute; left: 20%;"/>
+					</div>
+				</div>
+				<div class = "workspace" id = "saladWorkspace">
+					
+				</div>
+				<div class = "trashArea" id = "saladTrash">
+					<img src = "assets/trashIcon.png" height = "100%" width = "50%" style = "margin-left: auto; margin-right: auto;"/>
+				</div>
+				<div class = "gradeButton" onmousedown = "grade()">
+					<img src = "assets/checkmarkIcon.png" height = "100%" width = "100%"/>
+				</div>
+				<div class = "ingredientContainer" id = "lettuceSaladContainer">
+					<div class = "ingredientContainerHeading">
+						Lettuces
+						<div class = "hideButton" onmousedown = "hideIngredients(1)">
+							
+						</div>
+					</div>
+					<div class = "ingredientOrganizer">
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('lettuce', 'Romaine')"><img src = "assets/lettuce_0.png" height = "100%" width = "100%" style = "display: inline;"/><span>Romaine</span></div>
+							<div onmousedown = "createItem('lettuce', 'Spring Mix')"><img src = "assets/lettuce_1.png" height = "100%" width = "100%" style = "display: inline;"/><span>Spring Mix</span></div>
+							<div onmousedown = "createItem('lettuce', 'Spinach')"><img src = "assets/lettuce_2.png" height = "100%" width = "100%" style = "display: inline;"/><span>Spinach</span></div>
+						</div>
+					</div>
+				</div>
+				<div class = "ingredientContainer" id = "dressingSaladContainer">
+					<div class = "ingredientContainerHeading">
+						Dressings
+						<div class = "hideButton" onmousedown = "hideIngredients(2)">
+							
+						</div>
+					</div>
+					<div class = "ingredientOrganizer">
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('dressing', 'Blue Cheese')"><img src = "assets/dressing_0.png" height = "100%" width = "100%" style = "display: inline;"/><span>Blue Cheese</span></div>
+							<div onmousedown = "createItem('dressing', 'Poppy')"><img src = "assets/dressing_1.png" height = "100%" width = "100%" style = "display: inline;"/><span>Poppy</span></div>
+							<div onmousedown = "createItem('dressing', 'Ranch')"><img src = "assets/dressing_2.png" height = "100%" width = "100%" style = "display: inline;"/><span>Ranch</span></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('dressing', 'Raspberry Walnut')"><img src = "assets/dressing_3.png" height = "100%" width = "100%" style = "display: inline;"/><span>Raspberry Walnut</span></div>
+							<div onmousedown = "createItem('dressing', 'Caesar')"><img src = "assets/dressing_4.png" height = "100%" width = "100%" style = "display: inline;"/><span>Caesar</span></div>
+							<div onmousedown = "createItem('dressing', 'Balsamic')"><img src = "assets/dressing_5.png" height = "100%" width = "100%" style = "display: inline;"/><span>Balsamic</span></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('dressing', 'Cilantro')"><img src = "assets/dressing_6.png" height = "100%" width = "100%" style = "display: inline;"/><span>Cotija Cilantro</span></div>
+							<div onmousedown = "createItem('dressing', 'BBQ')"><img src = "assets/dressing_7.png" height = "100%" width = "100%" style = "display: inline;"/><span>BBQ</span></div>
+						</div>
+					</div>
+				</div>
+				<div class = "ingredientContainer" id = "cheeseSaladContainer">
+					<div class = "ingredientContainerHeading">
+						Cheeses
+						<div class = "hideButton" onmousedown = "hideIngredients(3)">
+							
+						</div>
+					</div>
+					<div class = "ingredientOrganizer">
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('cheeseSalad', 'Feta')"><img src = "assets/cheese_6.png" height = "100%" width = "100%" style = "display: inline;"/><span>Feta</span></div>
+							<div onmousedown = "createItem('cheeseSalad', 'Mozzarella')"><img src = "assets/cheese_3.png" height = "100%" width = "100%" style = "display: inline;"/><span>Mozzarella</span></div>
+							<div onmousedown = "createItem('cheeseSalad', 'Parmesan')"><img src = "assets/cheese_4.png" height = "100%" width = "100%" style = "display: inline;"/><span>Parmesan</span></div>
+						</div>
+					</div>
+				</div>
+				<div class = "ingredientContainer" id = "meatSaladContainer">
+					<div class = "ingredientContainerHeading">
+						Meats
+						<div class = "hideButton" onmousedown = "hideIngredients(4)">
+							
+						</div>
+					</div>
+					<div class = "ingredientOrganizer">
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('meatSalad', 'Chicken')"><img src = "assets/meatSalad_2.png" height = "100%" width = "100%" style = "display: inline;"/><span>Chicken</span></div>
+							<div onmousedown = "createItem('meatSalad', 'Turkey')"><img src = "assets/meatSalad_0.png" height = "100%" width = "100%" style = "display: inline;"/><span>Turkey</span></div>
+							<div onmousedown = "createItem('meatSalad', 'Bacon')"><img src = "assets/meatSalad_1.png" height = "100%" width = "100%" style = "display: inline;"/><span>Bacon</span></div>
+						</div>
+					</div>
+				</div>
+				<div class = "ingredientContainer" id = "toppingSaladContainer">
+					<div class = "ingredientContainerHeading">
+						Toppings
+						<div class = "hideButton" onmousedown = "hideIngredients(5)">
+							
+						</div>
+					</div>
+					<div class = "ingredientOrganizer">
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('topping', 'Tomato')"><img src = "assets/topping_00.png" height = "100%" width = "100%" style = "display: inline;"/><span>Tomato</span></div>
+							<div onmousedown = "createItem('topping', 'Cucumber')"><img src = "assets/topping_19.png" height = "100%" width = "100%" style = "display: inline;"/><span>Cucumber</span></div>
+							<div onmousedown = "createItem('topping', 'Onion')"><img src = "assets/topping_01.png" height = "100%" width = "100%" style = "display: inline;"/><span>Onion</span></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('topping', 's&p')"><img src = "assets/topping_02.png" height = "100%" width = "100%" style = "display: inline;"/><span>S &#38; P</span></div>
+							<div onmousedown = "createItem('topping', 'Mushrooms')"><img src = "assets/topping_03.png" height = "100%" width = "100%" style = "display: inline;"/><span>Mushrooms</span></div>
+							<div onmousedown = "createItem('topping', 'Dried Cranberry')"><img src = "assets/topping_04.png" height = "100%" width = "100%" style = "display: inline;"/><span>Dried Cranberry</span></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('topping', 'Sunflower Seeds')"><img src = "assets/topping_05.png" height = "100%" width = "100%" style = "display: inline;"/><span>Sunflower Seeds</span></div>
+							<div onmousedown = "createItem('topping', 'Almonds')"><img src = "assets/topping_06.png" height = "100%" width = "100%" style = "display: inline;"/><span>Almonds</span></div>
+							<div onmousedown = "createItem('topping', 'Avocado')"><img src = "assets/topping_07.png" height = "100%" width = "100%" style = "display: inline;"/><span>Avocado</span></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('topping', 'Raspberry')"><img src = "assets/topping_08.png" height = "100%" width = "100%" style = "display: inline;"/><span>Raspberry</span></div>
+							<div onmousedown = "createItem('topping', 'Strawberry')"><img src = "assets/topping_09.png" height = "100%" width = "100%" style = "display: inline;"/><span>Strawberry</span></div>
+							<div onmousedown = "createItem('topping', 'Blackberry')"><img src = "assets/topping_10.png" height = "100%" width = "100%" style = "display: inline;"/><span>Blackberry</span></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('topping', 'Blueberry')"><img src = "assets/topping_11.png" height = "100%" width = "100%" style = "display: inline;"/><span>Blueberry</span></div>
+							<div onmousedown = "createItem('topping', 'Croutons')"><img src = "assets/topping_12.png" height = "100%" width = "100%" style = "display: inline;"/><span>Croutons</span></div>
+							<div onmousedown = "createItem('topping', 'Candied Pecans')"><img src = "assets/topping_13.png" height = "100%" width = "100%" style = "display: inline;"/><span>Candied Pecans</span></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('topping', 'Oranges')"><img src = "assets/topping_14.png" height = "100%" width = "100%" style = "display: inline;"/><span>Oranges</span></div>
+							<div onmousedown = "createItem('topping', 'Cilantro')"><img src = "assets/topping_15.png" height = "100%" width = "100%" style = "display: inline;"/><span>Cilantro</span></div>
+							<div onmousedown = "createItem('topping', 'Black Beans')"><img src = "assets/topping_16.png" height = "100%" width = "100%" style = "display: inline;"/><span>Black Beans</span></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('topping', 'Corn')"><img src = "assets/topping_17.png" height = "100%" width = "100%" style = "display: inline;"/><span>Corn</span></div>
+							<div onmousedown = "createItem('topping', 'Tortilla Strips')"><img src = "assets/topping_18.png" height = "100%" width = "100%" style = "display: inline;"/><span>Tortilla Strips</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id = "smoothieScreenContainer">
+				<div class = "navBar" id = "smoothieBar">
+					<div class = "sideButton" id = "nameSideButton" onmousedown = "showIngredients(1)">
+						<img src = "assets/name_0.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+					</div>
+					<div class = "sideButton" id = "juiceSideButton" onmousedown = "showIngredients(2)">
+						<img src = "assets/juice_0.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+					</div>
+					<div class = "sideButton" id = "icecreamSideButton" onmousedown = "showIngredients(3)">
+						<img src = "assets/icecream_0.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+					</div>
+					<div class = "dynamicSideButtons" id = "dynamicSmoothieButtons">
+						<div class = "dynamicSideButton" id = "fruitSideButton" onmousedown = "showIngredients(4)">
+							<img src = "assets/fruit_0.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+						</div>
+					</div>
+					<div class = "helpButton" onmousedown = "toggleTutorial(1)">
+						<img src = "assets/questionMark.png" height = "100%" width = "100%"/>
+					</div>
+					<div class = "backButton" onclick = "hideScreen(3)">
+						<img src = "assets/backArrow.png" height = "100%" width = "100%"/>
+					</div>
+				</div>
+				<div class = "navBarOther" id = "smoothieNavBarOther">
+					<div class = "sideButtonOther" id = "fruitSideButtonOther" onmousedown = "showIngredients(4)">
+						<img src = "assets/fruit_0.png" height = "100%" width = "80%" style = "position: absolute; left: 0;"/>
+					</div>
+				</div>
+				<div class = "workspace" id = "smoothieWorkspace">
+					
+				</div>
+				<div class = "trashArea" id = "smoothieTrash">
+					<img src = "assets/trashIcon.png" height = "100%" width = "50%" style = "margin-left: auto; margin-right: auto;"/>
+				</div>
+				<div class = "gradeButton" onmousedown = "grade()">
+					<img src = "assets/checkmarkIcon.png" height = "100%" width = "100%"/>
+				</div>
+				<div class = "ingredientContainer" id = "nameSmoothieContainer">
+					<div class = "ingredientContainerHeading">
+						Names
+						<div class = "hideButton" onmousedown = "hideIngredients(1)">
+							
+						</div>
+					</div>
+					<div class = "ingredientOrganizer">
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('name', 'Mango Tango')"><img src = "assets/name_0.png" height = "100%" width = "100%" style = "display: inline;"/></div>
+							<div onmousedown = "createItem('name', 'Going Guava')"><img src = "assets/name_1.png" height = "100%" width = "100%" style = "display: inline;"/></div>
+							<div onmousedown = "createItem('name', 'Pink Pina Colada')"><img src = "assets/name_2.png" height = "100%" width = "100%" style = "display: inline;"/></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('name', 'Morning Sunshine')"><img src = "assets/name_3.png" height = "100%" width = "100%" style = "display: inline;"/></div>
+							<div onmousedown = "createItem('name', 'Razzleberry')"><img src = "assets/name_4.png" height = "100%" width = "100%" style = "display: inline;"/></div>
+							<div onmousedown = "createItem('name', 'No Dairy Berry')"><img src = "assets/name_5.png" height = "100%" width = "100%" style = "display: inline;"/></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('name', 'Blueberry #5')"><img src = "assets/name_6.png" height = "100%" width = "100%" style = "display: inline;"/></div>
+							<div onmousedown = "createItem('name', 'Strawberry Tsunami')"><img src = "assets/name_7.png" height = "100%" width = "100%" style = "display: inline;"/></div>
+							<div onmousedown = "createItem('name', 'Planet Peaches')"><img src = "assets/name_8.png" height = "100%" width = "100%" style = "display: inline;"/></div>
+						</div>
+					</div>
+				</div>
+				<div class = "ingredientContainer" id = "juiceSmoothieContainer">
+					<div class = "ingredientContainerHeading">
+						Juice
+						<div class = "hideButton" onmousedown = "hideIngredients(2)">
+							
+						</div>
+					</div>
+					<div class = "ingredientOrganizer">
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('juice', 'Peach')"><img src = "assets/juice_0.png" height = "100%" width = "100%" style = "display: inline;"/><span>Peach</span></div>
+							<div onmousedown = "createItem('juice', 'Guava')"><img src = "assets/juice_1.png" height = "100%" width = "100%" style = "display: inline;"/><span>Guava</span></div>
+							<div onmousedown = "createItem('juice', 'Orange')"><img src = "assets/juice_2.png" height = "100%" width = "100%" style = "display: inline;"/><span>Orange</span></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('juice', 'Apple')"><img src = "assets/juice_3.png" height = "100%" width = "100%" style = "display: inline;"/><span>Apple</span></div>
+							<div onmousedown = "createItem('juice', 'Cranberry')"><img src = "assets/juice_4.png" height = "100%" width = "100%" style = "display: inline;"/><span>Cranberry</span></div>
+						</div>
+					</div>
+				</div>
+				<div class = "ingredientContainer" id = "icecreamSmoothieContainer">
+					<div class = "ingredientContainerHeading">
+						Icecreams
+						<div class = "hideButton" onmousedown = "hideIngredients(3)">
+							
+						</div>
+					</div>
+					<div class = "ingredientOrganizer">
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('icecream', 'VanYog')"><img src = "assets/icecream_0.png" height = "100%" width = "100%" style = "display: inline;"/><span>Vanilla Yogurt</span></div>
+							<div onmousedown = "createItem('icecream', 'PS')"><img src = "assets/icecream_1.png" height = "100%" width = "100%" style = "display: inline;"/><span>Pineapple Sherbet</span></div>
+							<div onmousedown = "createItem('icecream', 'RaspSher')"><img src = "assets/icecream_2.png" height = "100%" width = "100%" style = "display: inline;"/><span>Raspberry Sherbet</span></div>
+						</div>
+					</div>
+				</div>
+				<div class = "ingredientContainer" id = "fruitSmoothieContainer">
+					<div class = "ingredientContainerHeading">
+						Fruits
+						<div class = "hideButton" onmousedown = "hideIngredients(4)">
+							
+						</div>
+					</div>
+					<div class = "ingredientOrganizer">
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('fruit', 'Mango')"><img src = "assets/fruit_0.png" height = "100%" width = "100%" style = "display: inline;"/><span>Mango</span></div>
+							<div onmousedown = "createItem('fruit', 'Strawberry')"><img src = "assets/fruit_1.png" height = "100%" width = "100%" style = "display: inline;"/><span>Strawberry</span></div>
+							<div onmousedown = "createItem('fruit', 'Banana')"><img src = "assets/fruit_2.png" height = "100%" width = "100%" style = "display: inline;"/><span>Banana</span></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('fruit', 'CreamofCoconut')"><img src = "assets/fruit_3.png" height = "100%" width = "100%" style = "display: inline;"/><span>Cream of Coconut</span></div>
+							<div onmousedown = "createItem('fruit', 'Raspberry')"><img src = "assets/fruit_4.png" height = "100%" width = "100%" style = "display: inline;"/><span>Raspberry</span></div>
+							<div onmousedown = "createItem('fruit', 'Blueberry')"><img src = "assets/fruit_5.png" height = "100%" width = "100%" style = "display: inline;"/><span>Blueberry</span></div>
+						</div>
+						<div class = "ingredientRow">
+							<div onmousedown = "createItem('fruit', 'Peaches')"><img src = "assets/fruit_6.png" height = "100%" width = "100%" style = "display: inline;"/><span>Peaches</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id = "menuScreenContainer">
+				<div id = "titleBar">
+					Kneaders Menu Study App
+				</div>
+				<div id = "menuAligner">
+					<div class = "menuButton" id = "sandwichButton" onclick = "showScreen(1)">
+						<img src = "assets/sandwichIcon.png" height = "100%" width = "100%"/>
+					</div>
+					<div class = "menuButton" id = "saladButton" onclick = "showScreen(2)">
+						<img src = "assets/saladIcon.png" height = "100%" width = "100%"/>
+					</div>
+					<div class = "menuButton" id = "smoothieButton" onclick = "showScreen(3)">
+						<img src = "assets/smoothieIcon.png" height = "100%" width = "100%"/>
+					</div>
+				</div>
+				<span id = "devBuild">
+					Under Development
+				</span>
+				<script type = "text/javascript">
+					var toggleCreditStuff = function(){
+						if(document.getElementById("optionsScreen").style.display == "none" || document.getElementById("optionsScreen").style.display == ""){
+							document.getElementById("optionsScreen").style.display = "block";
+							document.getElementById("creditsButtons").style.display = "block";
+							document.getElementById("credits").style.display = "none";
+							document.getElementById("debugForm").style.display = "none";
+						}
+						else{
+							if(document.getElementById("creditsButtons").style.display == "block"){
+								document.getElementById("optionsScreen").style.display = "none";
+							}
+							else{
+								document.getElementById("creditsButtons").style.display = "block";
+								document.getElementById("credits").style.display = "none";
+								document.getElementById("debugForm").style.display = "none";
+							}
+						}
+					}
+				</script>
+				<div id = "optionsButton" onmousedown = "toggleCreditStuff()">
+					<img src = "assets/optionsIcon.png" height = "100%" width = "100%"/>
+				</div>
+				<div id = "optionsScreen">
+					<div id = "optionsClose" onmousedown = "toggleCreditStuff()">
+						
+					</div>
+					<div id = "creditsButtons">
+						<div id = "creditsButton" onmousedown = "document.getElementById('creditsButtons').style.display = 'none'; document.getElementById('credits').style.display = 'block';">
+							<p id = "creditsButtonText">Credits</p>
+						</div>
+						<div id = "debugButton" onmousedown = "document.getElementById('creditsButtons').style.display = 'none'; document.getElementById('debugForm').style.display = 'block';">
+							<p style = "padding-top: 0;">Submit<br /> a<br /> Bug<br /></p>
+						</div>
+					</div>
+					<span id = "credits">
+						Hey guys and girls! =)  I just wanted to devote this space to a few special people who helped me in some shape or form in the creation of this app.
+						<br />
+						<ul id = "credittedPeople">
+							<li><span>Kate Keenan</span><br />-At the top of this list particularly because she was wonderfully supportive, listened to me rant about all my dumb app ideas about baking,
+							 and the front end of the store.  Overall an inspiring, intelligent person, and the best baker in the world(Sorry Conrad).  I wouldn't be at this point in time
+							 without her help and I truly appreciate her confidence and encouragement to get this app done, as well as answering my endless emails about how excited I am and taking the
+							 annoying phone calls while she's super busy.  Definitely the key behind the works of this app.  =)  Thank you Kate.</li>
+							<li><span>Nate Duvall</span><br />-Giving my app a chance in the real world.  Even though it was born in captivity, I feel like it will survive.</li>
+							<li><span>Tui Auva'a</span><br />-Supporting the app concept, as well as being encouraging</li>
+							<li><span>Andrew Smith</span><br />-Supporting the app concept as well, and being the big guy at FFG</li>
+							<li><span>Conrad Jackson</span><br />-Helping create the sounds in the app, telling me how silly the original concept was and helping me move forward with everything.</li>
+							<li><span>My Girlfriend</span><br />-Always, and I mean always there to support everything that I want to do.  As well as going through the pain of being there while I code for
+							 hours on end at a time, staying up 'till the butt crack of dawn and sparking my ideas for how to fix all the annoying bugs.  Love you &#60;3</li>
+							<li><span>Tristan Barbee</span><br />-I mean...  My best bud, he's there to support me no matter what.</li>
+							<li><span>Lorenz Mangahas</span><br />-Another great inspiration, Lorenz encouraged me to introduce the app to FFG and get this whole thing started.  Lorenz is the foundation for this entire
+							 project and without him I wouldn't have even started.  My appreciation for that is endless.  He might say he is just a simple sandwich maker, but he is one of the coolest
+							 dudes I have ever met.  Thank you Lorenz.</li>
+							<li><span>Goose</span><br />-Just like Lorenz, he was behind getting this app rolling to FFG.  Definitely an inspiration, and similar to Kate he gave an effort to get it through to
+							 FFG.  Thanks man</li>
+							<li><span>Mauri Crist</span><br />-Another one of my inspirations, she complimented the app and encouraged me to continue development.</li>
+							<li><span>Dustin Jones</span><br />-First one to attempt to get me through to FFG and present my app concept, but he forgot, a lot.  Still the best General Manager I have ever seen though. =D</li>
+							<li><span>Everyone else!</span><br />Everyone else thank you all that supported my app, and all that will continue to support my app.  I appreciate every little bit no matter how small.  If
+							 you feel like you deserve a place on the list of names, then just tell me I will put you on there xD  Sorry if I forgot.</li>
+							<li><span>Chuck Norris</span></li>
+						</ul>
+						<br />
+						Everyone on this list are amazing people.  And I appreciate everything you guys have done for me and your contributions to this app.  Love everyone =)<br />
+						-Dorian(Lambo)
+					</span>
+					<span id = "debugForm">
+						<form id = "bugSubmitForm" action = "mailBug.php" method = "POST">
+							<input type = "text" id = "emailerInput" placeholder = "Your Email:" name = "emailer" required>
+							<br />
+							<textarea name = "bugBeingSent" id = "emailBugInput" placeholder = "Write bug here..." rows = "5" cols = "40" wrap = "hard" required></textarea>
+							<br />
+							<input type = "submit" value = "Send >>" id = "bugSubmitButton">
+						</form>
+					</span>
+				</div>
+			</div>
+			<div id = "errorMessage">
+				<div id = "errorClose" onmousedown = "toggleError(0)">
+					
+				</div>
+				<span id = "zError">
+				
+				</span>
+			</div>
+			<div id = "tutorialScreen">
+				<div id = "tutorialClose" onmousedown = "toggleTutorial(0)">
+					
+				</div>
+			</div>
+		</div>
+		<script src = "main.js"></script>
+	</body>
+</html>>
